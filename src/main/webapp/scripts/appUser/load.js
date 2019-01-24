@@ -43,7 +43,7 @@ $(document).ready(function () {
         $('#edit2-content').val(json[indexjson].msg);
 
     })
-    /*$('#edit-btn2').on('click', function () {
+    $('#edit-btn2').on('click', function () {
         console.log("******")
         update();
         $('#modal-alert-update').modal('show');
@@ -52,7 +52,7 @@ $(document).ready(function () {
             $('#modal-alert-update').modal('hide');
         }, 2000);
 
-    })*/
+    })
 
     $('#add-btn-save').on('click',function () {
         insert();
@@ -159,67 +159,6 @@ function customSearch() {
     console.log(json)
     return json;
 }
-//===============================================================
-function nn() {
-    let json = $.ajax({
-        url: session.context + "/appUsers/findBySender",
-        contentType: "application/json;charset=UTF-8",
-        headers: {Accept: "application/json;charset=UTF-8"},
-        type: "GET",
-        //data: {firstName: $('#inputsearch').val()},
-        data: {sender: $('#inputsearch').val()},
-        async: false
-    }).done(function () {
-    }).responseText;
-    console.log(json);
-    //json = JSON.parse(json);
-    json = JSON.parse(json);
-    console.log(json);
-    $('#tbody').empty();
-    if (json.length > 0) {
-        for (let x of json) {
-            $('#tbody').append('' +
-                '<tr>' +
-                '<td class="text-center">' + x.id + '</td>' +
-                '<td> ' + x.sender + '</td>' +
-                '<td> ' + x.send_To + '</td>' +
-                '<td> ' + x.subject + '</td>' +
-                '<td> ' + x.email + '</td>' +
-                '<td> ' + x.sentDate + '</td>' +
-                '<td> ' + x.level + '</td>' +
-                '<td> ' + x.status + '</td>' +
-                '<td> ' + x.type + '</td>' +
-                '<td class="text-center">' + x.deseription + '</td>' +
-                '<td class="text-center"><button type="button" class="btn btn-outline-success" name="editButton" data-toggle="modal" data-target="#exampleModal" value="' + x.id + " " + x.sender + " " + x.send_To + " " + x.subject + " " + x.email + " " + x.sentDate + " " + x.level + " " + x.status + " " + type +" " +'">Edit</button>' + " " +
-                '<button type="button" class="btn btn-outline-dark" name="deleteButton" data-toggle="modal" data-target="#exampleModal2" value="' + x.id + '" >Delete</button>' +
-                '</td>' +
-                '</tr>');
-        }
-        $('button[name="deleteButton"]').click(function () {
-            $('button[name="delc"]').val($(this).val()).on('click', function () {
-                deleDataToTable($(this).val());
-                loadDataToTable();
-            })
-        })
-        $('button[name="editButton"]').on('click', function () {
-            let value = ($(this).val());
-            value = value.split(" ");
-            $('#addfirst').val(value[1]);
-            $('#addlast').val(value[2]);
-            $('#adddescription').val(value[3]);
-
-            $('#edit-btn2').val(value[0]).on('click', function () {
-                editDataToTable($(this).val());
-                loadDataToTable();
-            })
-        })
-    } else {
-        $('#tbody').append('<tr><td style="text-align: center;" colspan="5">No data.</td></tr>');
-    }
-}
-
-
-//**************************************************************************
 function editSearchCustom() {
     console.log("function");
     json = JSON.parse(customSearch());
@@ -342,6 +281,7 @@ function modalEdit(id) {
                 $('#edit-attachments').append(
                     '' + '<label style="text-decoration: underline" onclick="downloadFile(\'' + filenameAll[count] + '\')">' + filename+"..."+typeFilename + '<span class="glyphicon glyphicon-download"></span></label>'
                 );
+                console.log(filenameAll[count]);
             }
         }catch (e) {
 
