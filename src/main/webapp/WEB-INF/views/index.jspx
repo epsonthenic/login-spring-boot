@@ -125,7 +125,7 @@
     <div class="container">
         <div class="h1-issueLog">
             <h1>Issue Log</h1>
-            <p>Envelope icon: <span class="glyphicon-home"></span></p>
+            <p>Envelope icon: <span class="glyphicon glyphicon-download"></span></p>
 
         </div>
         <div class="card ">
