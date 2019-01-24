@@ -249,10 +249,7 @@ function editSearchCustom() {
     } else {
         $('#tbody1').append('<tr><td style="text-align: center;" colspan="10">No data.</td></tr>');
     }
-
 }
-
-
 function downloadFile(filename) {
 
     console.log(filename);
@@ -332,15 +329,23 @@ function modalEdit(id) {
             let count;
             for (count=0;count<filenameAll.length;count++){
                 console.log(filenameAll[count]);
+                console.log(filenameAll.length);
                 filenameAll[count];
+                var filename = filenameAll[count];
+                var index = filename.lastIndexOf('.');
+                console.log(filename.length);
+                console.log(index);
+                var typeFilename = filename.substring(index,filename.length)
+                console.log(type);
+                filename = filename.substring(0,19);
+                console.log(filename+"..."+typeFilename);
                 $('#edit-attachments').append(
-                    '' + '<label style="text-decoration: underline" onclick="downloadFile(\'' + filenameAll[count] + '\')">' + filenameAll[count] + '</label>'
+                    '' + '<label style="text-decoration: underline" onclick="downloadFile(\'' + filenameAll[count] + '\')">' + filename+"..."+typeFilename + '<span class="glyphicon glyphicon-download"></span></label>'
                 );
             }
         }catch (e) {
 
         }
-
 
 }
 function findSender() {
